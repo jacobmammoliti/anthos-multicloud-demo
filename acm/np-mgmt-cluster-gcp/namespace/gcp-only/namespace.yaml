@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gcp-only
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-gcp
