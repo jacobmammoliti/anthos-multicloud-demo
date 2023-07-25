@@ -4,12 +4,12 @@ apiVersion: v1
 kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
-  name: release-name-argo-events-controller-manager
-  namespace: "argo"
+  name: argo-events-controller-manager
+  namespace: "argo-events"
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-controller-manager
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/component: controller-manager
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
@@ -19,12 +19,12 @@ apiVersion: v1
 kind: ServiceAccount
 automountServiceAccountToken: true
 metadata:
-  name: release-name-argo-events-events-webhook
-  namespace: "argo"
+  name: argo-events-events-webhook
+  namespace: "argo-events"
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-events-webhook
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/component: events-webhook
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
@@ -33,12 +33,12 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: release-name-argo-events-controller-manager
-  namespace: "argo"
+  name: argo-events-controller-manager
+  namespace: "argo-events"
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-controller-manager
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
 data:
@@ -206,11 +206,11 @@ spec:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: release-name-argo-events-controller-manager
+  name: argo-events-controller-manager
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-controller-manager
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/component: controller-manager
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
@@ -300,33 +300,33 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: release-name-argo-events-controller-manager
+  name: argo-events-controller-manager
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-controller-manager
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/component: controller-manager
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-argo-events-controller-manager
+  name: argo-events-controller-manager
 subjects:
 - kind: ServiceAccount
-  name: release-name-argo-events-controller-manager
-  namespace: "argo"
+  name: argo-events-controller-manager
+  namespace: "argo-events"
 ---
 # Source: argo-events/templates/argo-events-controller/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: release-name-argo-events-controller-manager
-  namespace: "argo"
+  name: argo-events-controller-manager
+  namespace: "argo-events"
   labels:
     helm.sh/chart: argo-events-2.4.0
     app.kubernetes.io/name: argo-events-controller-manager
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: argo-events
     app.kubernetes.io/component: controller-manager
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: argo-events
@@ -335,17 +335,17 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: argo-events-controller-manager
-      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/instance: argo-events
   revisionHistoryLimit: 5
   replicas: 1
   template:
     metadata:
       annotations:
-        checksum/config: 9939bd8314fefd6288625200dad5e48385964328a3d182b3301c8b57c23953c8
+        checksum/config: 583a7f0e42852ffb2879eb04759594a6860b14bcaff4284c916f403f6727988d
       labels:
         helm.sh/chart: argo-events-2.4.0
         app.kubernetes.io/name: argo-events-controller-manager
-        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/instance: argo-events
         app.kubernetes.io/component: controller-manager
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/part-of: argo-events
@@ -392,8 +392,8 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 3
-      serviceAccountName: release-name-argo-events-controller-manager
+      serviceAccountName: argo-events-controller-manager
       volumes:
       - name: config
         configMap:
-          name: release-name-argo-events-controller-manager
+          name: argo-events-controller-manager
