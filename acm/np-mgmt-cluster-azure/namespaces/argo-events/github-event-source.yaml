@@ -24,6 +24,9 @@ spec:
         url: http://github-webhooks.coldbrewlabs.ca
       events:
         - "*"
+      webhookSecret:
+        name: github-webhook-secret
+        key: github-webhook-secret
       # type of the connection between event-source and Github.
       # You should set it to false to avoid man-in-the-middle and other attacks.
       insecure: true
