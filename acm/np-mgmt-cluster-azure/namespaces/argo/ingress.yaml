@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: argo
   namespace: argo
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-azure
 spec:
   ingressClassName: nginx
   rules:
