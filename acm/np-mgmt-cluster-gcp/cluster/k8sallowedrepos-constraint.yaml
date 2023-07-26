@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: repo-is-gar
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-gcp
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    repos:
+      - "us-central1-docker.pkg.dev/"

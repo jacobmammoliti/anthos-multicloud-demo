@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: repo-is-acr
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-azure
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    repos:
+      - "nonproductionacr.azurecr.io/"
