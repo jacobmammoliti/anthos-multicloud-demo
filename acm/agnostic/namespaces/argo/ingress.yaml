@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo
+  namespace: argo
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: argo.coldbrewlabs.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: argo-argo-workflows-server
+            port:
+              number: 2746
