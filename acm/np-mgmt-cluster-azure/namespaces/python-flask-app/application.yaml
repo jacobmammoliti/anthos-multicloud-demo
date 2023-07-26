@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-flask-app
+  namespace: argocd
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-azure
+spec:
+  destination:
+    namespace: python-flask-app
+    server: https://kubernetes.default.svc
+  source:
+    path: app/kubernetes/base
+    repoURL: https://github.com/jacobmammoliti/anthos-multicloud-demo
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

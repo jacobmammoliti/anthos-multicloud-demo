@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-flask-app
+  namespace: python-flask-app
+spec:
+  selector:
+    matchLabels:
+      app: python-flask-app
+  template:
+    metadata:
+      labels:
+        app: python-flask-app
+    spec:
+      containers:
+      - name: python-flask-app
+        image: nonproductionacr.azurecr.io/my-python-flask-app:v1.0
+        resources:
+          limits:
+            memory: "128Mi"
+        ports:
+        - containerPort: 5000
