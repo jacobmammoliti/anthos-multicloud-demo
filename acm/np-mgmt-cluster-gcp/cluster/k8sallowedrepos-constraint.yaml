@@ -5,6 +5,7 @@ metadata:
   annotations:
     configsync.gke.io/cluster-name-selector: np-mgmt-cluster-gcp
 spec:
+  enforcementAction: warn
   match:
     kinds:
       - apiGroups: [""]
