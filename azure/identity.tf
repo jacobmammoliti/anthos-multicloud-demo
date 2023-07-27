@@ -50,7 +50,7 @@ resource "azurerm_user_assigned_identity" "aso_managed_identity" {
 }
 
 resource "azurerm_role_assignment" "assign_identity_aso_contributer" {
-  scope                = azurerm_resource_group.non_prod_rg.id
+  scope                = data.azurerm_subscription.subscription.id
   role_definition_name = "Contributor"
   principal_id         = azurerm_user_assigned_identity.aso_managed_identity.principal_id
 }

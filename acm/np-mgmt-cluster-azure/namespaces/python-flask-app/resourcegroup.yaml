@@ -1,0 +1,9 @@
+apiVersion: resources.azure.com/v1api20200601
+kind: ResourceGroup
+metadata:
+  name: python-flask-app-rg
+  namespace: python-flask-app
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-azure
+spec:
+  location: eastus

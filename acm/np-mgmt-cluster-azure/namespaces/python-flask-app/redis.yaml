@@ -1,0 +1,16 @@
+apiVersion: cache.azure.com/v1api20201201
+kind: Redis
+metadata:
+  name: python-flask-app-redis
+  namespace: python-flask-app
+  annotations:
+    configsync.gke.io/cluster-name-selector: np-mgmt-cluster-azure
+spec:
+  location: eastus
+  owner:
+    name: python-flask-app-rg
+  sku:
+    name: Standard
+    family: C
+    capacity: 1
+  enableNonSslPort: false

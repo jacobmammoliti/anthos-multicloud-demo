@@ -15,6 +15,11 @@ variable "location" {
   description = "(optional) Default Azure location to deploy to."
 }
 
+variable "subscription_id" {
+  type        = string
+  description = "(required) Subscription ID to use for Azure Service Operator."
+}
+
 variable "tags" {
   type = map(string)
   default = {
@@ -25,5 +30,5 @@ variable "tags" {
 
 variable "tenant_id" {
   type        = string
-  description = "(required) Tenant ID to use."
+  description = "(required) Tenant ID to use for Azure Key Vault."
 }
