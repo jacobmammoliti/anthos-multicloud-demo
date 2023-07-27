@@ -37,6 +37,7 @@ No modules.
 | [azurerm_user_assigned_identity.kaniko_managed_identity](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/user_assigned_identity) | resource |
 | [random_pet.non_prod_key_vault_name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
 | [random_pet.resource_group_name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
+| [azurerm_subscription.subscription](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
 
 ## Inputs
 
@@ -44,8 +45,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aks_settings"></a> [aks\_settings](#input\_aks\_settings) | (optional) Map of AKS cluster settings. | `map(any)` | <pre>{<br>  "aks_version": "1.27.1",<br>  "disk_size_gb": 50,<br>  "node_pool_size": 3,<br>  "node_size": "Standard_DS2_v2"<br>}</pre> | no |
 | <a name="input_location"></a> [location](#input\_location) | (optional) Default Azure location to deploy to. | `string` | `"East US"` | no |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | (required) Subscription ID to use for Azure Service Operator. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | (optional) Map of tags to assign to infrastructure deployed. | `map(string)` | <pre>{<br>  "Environment": "Non-Production"<br>}</pre> | no |
-| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | (required) Tenant ID to use. | `string` | n/a | yes |
+| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | (required) Tenant ID to use for Azure Key Vault. | `string` | n/a | yes |
 
 ## Outputs
 
